@@ -75,7 +75,7 @@ exports.default = function (to, from, next, store) {
         data: {
             moduleName: confgs.layout,
             goods: _.merge({
-                $$rootUrl: undefined
+                $$rootUrl: false
             }, confgs.layoutInitState(to, from, next), to.meta)
         }
     });
@@ -87,7 +87,14 @@ exports.default = function (to, from, next, store) {
                 goods: store.state.airforce[confgs.layout].$$rootUrl
             }
         });
-    } else {}
+    } else {
+        store.commit('AIRFORCE_DO', {
+            data: {
+                moduleName: "$$rootUrl",
+                goods: null
+            }
+        });
+    }
 
     if (store.state.airforce[confgs.layout].title) {
         //设置页面标题

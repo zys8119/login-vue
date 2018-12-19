@@ -67,7 +67,7 @@ export default (to, from, next,store,confg = {})=>{
         data:{
             moduleName:confgs.layout,
             goods:_.merge({
-                $$rootUrl:undefined,
+                $$rootUrl:false,
             },confgs.layoutInitState(to, from, next),to.meta),
         }
     });
@@ -80,7 +80,12 @@ export default (to, from, next,store,confg = {})=>{
             }
         });
     }else {
-
+		store.commit('AIRFORCE_DO', {
+            data: {
+                moduleName: "$$rootUrl",
+                goods: null,
+            }
+        });
     }
 
     if(store.state.airforce[confgs.layout].title){
