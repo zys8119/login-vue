@@ -69,6 +69,22 @@ export default (to, from, next,store,confg = {})=>{
             goods:_.merge(confgs.layoutInitState(to, from, next),to.meta),
         }
     });
+    if(store.state.airforce[confgs.layout].$$rootUrl){
+		//设置自定义接口地址
+        store.commit('AIRFORCE_DO', {
+            data: {
+                moduleName: "$$rootUrl",
+                goods: undefined,
+            }
+        });
+        store.commit('AIRFORCE_DO', {
+            data: {
+                moduleName: "$$rootUrl",
+                goods: store.state.airforce[confgs.layout].$$rootUrl,
+            }
+        });
+    }
+
     if(store.state.airforce[confgs.layout].title){
         //设置页面标题
         document.title = store.state.airforce[confgs.layout].title;

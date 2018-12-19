@@ -1,6 +1,6 @@
 {
   "name": "login-vue",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "router-login-vue插件，用于vue路由权限登录控制",
   "main": "dist/index.js",
   "scripts": {
