@@ -66,7 +66,9 @@ export default (to, from, next,store,confg = {})=>{
     store.commit("AIRFORCE_DO", {
         data:{
             moduleName:confgs.layout,
-            goods:_.merge(confgs.layoutInitState(to, from, next),to.meta),
+            goods:_.merge({
+                $$rootUrl:undefined,
+            },confgs.layoutInitState(to, from, next),to.meta),
         }
     });
     if(store.state.airforce[confgs.layout].$$rootUrl){
@@ -74,15 +76,11 @@ export default (to, from, next,store,confg = {})=>{
         store.commit('AIRFORCE_DO', {
             data: {
                 moduleName: "$$rootUrl",
-                goods: undefined,
-            }
-        });
-        store.commit('AIRFORCE_DO', {
-            data: {
-                moduleName: "$$rootUrl",
                 goods: store.state.airforce[confgs.layout].$$rootUrl,
             }
         });
+    }else {
+
     }
 
     if(store.state.airforce[confgs.layout].title){
